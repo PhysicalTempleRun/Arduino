@@ -11,13 +11,18 @@ const int BT_RX = 2; // HC-06 RX 핀
 const int BT_TX = 3; // HC-06 TX 핀
 SoftwareSerial bluetooth(BT_RX, BT_TX); // RX, TX
 
+long i=0;
+
 void setup() {
+  
   initSensor();
   Serial.begin(9600); // 시리얼 통신 속도 설정 
   bluetooth.begin(9600); // 블루투스 통신 속도 설정 
 }
 
 void loop() {
+  Serial.println(i);
+
   getData();
 
   angleAcX = atan(AcY / sqrt(pow(AcX, 2) + pow(AcZ, 2))) * RADIAN_TO_DEGREE;
@@ -25,6 +30,7 @@ void loop() {
 
   checkAndPrintAngle();
   delay(100);
+  i++;
 }
 
 void initSensor() {
@@ -60,6 +66,7 @@ void checkAndPrintAngle() {
     if (recheckAngleAcX >= 50) {
       //mac과 블루투스 통신시
       Serial.println("left");
+      bluetooth.println("left");
 
       //윈도우와 블루투스 통신시
       //bluetooth.println("left");
@@ -80,6 +87,7 @@ void checkAndPrintAngle() {
     if (recheckAngleAcX <= -50) {
       //mac과 블루투스 통신시
       Serial.println("right");
+      bluetooth.println("right");
 
       //윈도우와 블루투스 통신시
       //bluetooth.println("right");
