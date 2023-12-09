@@ -30,8 +30,8 @@ bool leftPrev[arraySize] = { 1, 1, 1, 1 };
 bool rightPrev[arraySize] = { 1, 1, 1, 1 };
 unsigned long lastUpdatedTimeMillis = 0;
 
-long leftLimit = 245000;
-long rightLimit = 785000;
+long leftLimit = 300000;
+long rightLimit = 720000;
 
 void shiftArray(bool arr[], int size) {
   for (int i = 0; i < size - 1; i++) {
