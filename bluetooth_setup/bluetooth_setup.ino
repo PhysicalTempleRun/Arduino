@@ -16,6 +16,7 @@ void setup() {
 
 }
 
+//시리얼 모니터창을 매개로 아래 작업 수행하기
 //AT쳐도 시리얼 모니터에 OK안나오면 시리얼 모니터 설정 "No Line Ending"으로 바꾸기
 //AT+NAME보드이름 : 블루투스 모듈이름 변경 ex)AT+NAMEmybt;
 //AT+PIN비밀번호 : 블루투스 비밀번호 변경 ex) AT+PIN0000
