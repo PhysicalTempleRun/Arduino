@@ -30,8 +30,8 @@ bool leftPrev[arraySize] = { 1, 1, 1, 1 };
 bool rightPrev[arraySize] = { 1, 1, 1, 1 };
 unsigned long lastUpdatedTimeMillis = 0;
 
-long leftLimit = 360000;
-long rightLimit = 710000;
+long leftLimit = 500000;
+long rightLimit = 600000;
 
 void shiftArray(bool arr[], int size) {
   for (int i = 0; i < size - 1; i++) {
@@ -77,9 +77,6 @@ void deem(Adafruit_NeoPixel* strip) {
 
 
 bool isStart() {
-  //printArray(leftPrev, 4);
-  //printArray(rightPrev, 4);
-  //Serial.println("");
   if (leftPrev[3] != leftPrev[2]
       && rightPrev[3] != rightPrev[2]
       && leftPrev[3] != rightPrev[3]) {
@@ -159,7 +156,10 @@ void loop() {
     // Serial.print("right : ");
     // printArray(rightPrev,4);
 
-    if (prevStatus != currentStatus) {
+    if(prevStatus == "start" && currentStatus == "start") {
+      Serial.println("start");
+    }
+    else if (prevStatus != currentStatus) {
       Serial.println(currentStatus);
       prevStatus = currentStatus;
     }
