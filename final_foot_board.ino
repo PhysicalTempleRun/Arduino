@@ -30,8 +30,8 @@ bool leftPrev[arraySize] = { 1, 1, 1, 1 };
 bool rightPrev[arraySize] = { 1, 1, 1, 1 };
 unsigned long lastUpdatedTimeMillis = 0;
 
-long leftLimit = 500000;
-long rightLimit = 600000;
+long leftLimit = 440000;
+long rightLimit = 810000;
 
 void shiftArray(bool arr[], int size) {
   for (int i = 0; i < size - 1; i++) {
@@ -52,6 +52,7 @@ void printArray(bool arr[], int size) {
 }
 
 bool isLeftStep(long scale) {
+  //Serial.println(scale);
   if(leftPrev[3]==0) return scale > leftLimit-1000;
   return scale > leftLimit;
 }
