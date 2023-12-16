@@ -30,8 +30,8 @@ void loop() {
   angleAcX = atan(AcY / sqrt(pow(AcX, 2) + pow(AcZ, 2))) * RADIAN_TO_DEGREE;
   angleAcY = atan(-AcX / sqrt(pow(AcY, 2) + pow(AcZ, 2))) * RADIAN_TO_DEGREE;
 
-  //Serial.print("angleAcX : ");
-  //Serial.println(angleAcX);
+  Serial.print("angleAcX : ");
+  Serial.println(angleAcX);
   checkAndPrintAngle();
   delay(100);
   i++;
@@ -63,7 +63,7 @@ void checkAndPrintAngle() {
   if (angleAcX >= 50) {
 
     //0.1초 있다가 다시 값 확인해봐서 그때도 기울이고 있는지 확인
-    delay(100);
+    //delay(100);
     getData();
     double recheckAngleAcX = atan(AcY / sqrt(pow(AcX, 2) + pow(AcZ, 2))) * RADIAN_TO_DEGREE;
     
@@ -75,20 +75,20 @@ void checkAndPrintAngle() {
       //윈도우와 블루투스 통신시
       //bluetooth.println("left");
       //안되면 아래걸로 해보기
-			//bluetooth.write("left"); // 숫자를 문자로 변환하여 연결된 곳에 전송
-	    //bluetooth.write('\r'); // 캐리지 리턴 전송
-	    //bluetooth.write('\n'); // 라인 피드 전송
-			
+         //bluetooth.write("left"); // 숫자를 문자로 변환하여 연결된 곳에 전송
+       //bluetooth.write('\r'); // 캐리지 리턴 전송
+       //bluetooth.write('\n'); // 라인 피드 전송
+         
       delay(1000); //기울였다가 다시 제자리로 돌아가는 동안에 읽히는 값은 무시하기위함
     }
-  } else if (angleAcX >= -80 && angleAcX <= -44) {
+  } else if (angleAcX <= -65) {
 
     //0.1초 있다가 다시 값 확인해봐서 그때도 기울이고 있는지 확인
-    delay(100);
+    delay(50);
     getData();
     double recheckAngleAcX = atan(AcY / sqrt(pow(AcX, 2) + pow(AcZ, 2))) * RADIAN_TO_DEGREE;
 
-    if (recheckAngleAcX >= -80 && angleAcX <= -44) {
+    if (angleAcX <= -65) {
       //mac과 블루투스 통신시
       Serial.println("right");
       //bluetooth.println("right");
@@ -96,9 +96,9 @@ void checkAndPrintAngle() {
       //윈도우와 블루투스 통신시
       //bluetooth.println("right");
       //안되면 아래걸로 해보기
-			//bluetooth.write("right"); // 숫자를 문자로 변환하여 연결된 곳에 전송
-	    //bluetooth.write('\r'); // 캐리지 리턴 전송
-	    //bluetooth.write('\n'); // 라인 피드 전송
+         //bluetooth.write("right"); // 숫자를 문자로 변환하여 연결된 곳에 전송
+       //bluetooth.write('\r'); // 캐리지 리턴 전송
+       //bluetooth.write('\n'); // 라인 피드 전송
       delay(1000); //기울였다가 다시 제자리로 돌아가는 동안에 읽히는 값은 무시하기위함
     }
   }
